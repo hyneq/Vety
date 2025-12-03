@@ -3,4 +3,6 @@
 When executed, runs a development server with the backend app
 """
 
-# TODO Add run dev server
+from .app import app
+
+app.run()
