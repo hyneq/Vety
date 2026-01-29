@@ -4,7 +4,7 @@
 set -eu
 
 project_dir="$(dirname "$0")"
-venv="$project_dir/venv"
+venv="$project_dir/.venv"
 
 # Determine the Python interpreter
 if [[ -z "${PYTHON_INTERPRETER:=}" ]]; then
