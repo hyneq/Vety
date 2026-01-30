@@ -8,10 +8,7 @@ from typing import Sequence, Mapping, Set, Optional
 from dataclasses import dataclass
 from collections import deque
 
-class GameException(Exception):
-    """
-    A base class for game-related exceptions.
-    """
+from . import exceptions
 
 
 class Game:
@@ -54,7 +51,7 @@ class Game:
 
     def proceed(self):
         if self.finished:
-            raise GameAlreadyFinishedException()
+            raise exceptions.GameAlreadyFinishedException()
 
         if self._current_question_i == len(self._questions) - 1:
             self.finished = True
@@ -74,21 +71,9 @@ class Game:
 
     def get_results(self):
         if not self.finished:
-            raise GameNotFinishedYetException()
+            raise exceptions.GameNotFinishedYetException()
 
         return self._sentences
-
-
-class GameAlreadyFinishedException(GameException):
-    """
-    The game has already finished
-    """
-
-
-class GameNotFinishedYetException(GameException):
-    """
-    The game has not finished yet
-    """
 
 
 @dataclass
